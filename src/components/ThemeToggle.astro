@@ -1,0 +1,41 @@
+<button
+  id="theme-toggle"
+  type="button"
+  class="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
+  aria-label="Toggle dark mode"
+>
+  [~]
+</button>
+
+<script is:inline>
+  const storageKey = "theme-preference";
+
+  const getTheme = () => {
+    const stored = localStorage.getItem(storageKey);
+    if (stored) return stored;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem(storageKey, theme);
+  };
+
+
+
+  const initToggle = () => {
+    const toggle = document.getElementById("theme-toggle");
+    toggle?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      applyTheme(isDark ? "light" : "dark");
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToggle);
+  } else {
+    initToggle();
+  }
+</script>

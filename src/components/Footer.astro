@@ -1,0 +1,33 @@
+---
+import { SITE, SOCIAL_LINKS } from "../consts";
+import Badges from "./Badges.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<footer class="mt-20 text-sm">
+  { (currentPath === "/" || currentPath === "/index.html") && (
+    <div class="pb-5">
+      <Badges />
+    </div>
+  ) }
+  <div class="flex flex-wrap items-center justify-between gap-4 border-t border-[var(--theme-divider)] pt-4">
+    <ul class="m-0 flex list-none flex-wrap items-center gap-4 p-0">
+      {
+        SOCIAL_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target={!link.href.startsWith("mailto:") && !link.href.startsWith("/") ? "_blank" : undefined}
+              rel={!link.href.startsWith("mailto:") && !link.href.startsWith("/") ? "noreferrer" : undefined}
+              class="opacity-60 transition-opacity hover:opacity-100"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="opacity-60">@ {new Date().getFullYear()} {SITE.author}</p>
+  </div>
+</footer>

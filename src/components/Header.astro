@@ -1,0 +1,29 @@
+---
+import { NAV_LINKS } from "../consts";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="mb-10 border-b border-[var(--theme-divider)] pb-4">
+  <nav aria-label="Main navigation" class="flex items-center justify-between gap-4 text-sm">
+    <ul class="m-0 flex list-none flex-wrap items-center gap-4 p-0">
+      {
+        NAV_LINKS.map((item) => {
+          const isActive = currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href));
+          return (
+            <li>
+              <a 
+                href={item.href} 
+                class={`transition-opacity hover:opacity-100 ${isActive ? "font-bold opacity-100 text-[var(--text-main)]" : "opacity-70"}`}
+              >
+                [{item.label}]
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <ThemeToggle />
+  </nav>
+</header>

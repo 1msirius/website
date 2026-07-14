@@ -1,0 +1,49 @@
+---
+// 88x31 Badges
+const badges = [
+  { src: "https://cyber.dabamos.de/88x31/linux.gif", alt: "Linux powered", href: "https://kernel.org/" },
+  { src: "https://cyber.dabamos.de/88x31/emacs.gif", alt: "Emacs", href: "https://www.gnu.org/software/emacs/" },
+  { src: "https://cyber.dabamos.de/88x31/neovim.gif", alt: "Made with neovim", href: "https://neovim.io/" },
+  { src: "https://cyber.dabamos.de/88x31/gnu-linux.gif", alt: "GNU/Linux", href: "https://www.gnu.org/" },
+  { src: "https://cyber.dabamos.de/88x31/firefox.gif", alt: "Firefox", href: "https://www.mozilla.org/firefox/" },
+  { src: "https://cyber.dabamos.de/88x31/debian.gif", alt: "Debian", href: "https://www.debian.org/" },
+  { src: "https://cyber.dabamos.de/88x31/vim.gif", alt: "Vim", href: "https://www.vim.org/" },
+  { src: "https://cyber.dabamos.de/88x31/css3.gif", alt: "CSS3", href: "https://www.w3.org/Style/CSS/" },
+];
+---
+<div class="flex w-full overflow-hidden group h-[31px]">
+  <div class="flex w-max flex-shrink-0 animate-marquee gap-2 pr-2 group-hover:[animation-play-state:paused]">
+    {badges.map((b) => (
+      <a href={b.href} target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity flex-shrink-0">
+        <img src={b.src} alt={b.alt} width="88" height="31" class="pixelated block" />
+      </a>
+    ))}
+  </div>
+  <div class="flex w-max flex-shrink-0 animate-marquee gap-2 pr-2 group-hover:[animation-play-state:paused]">
+    {badges.map((b) => (
+      <a href={b.href} target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity flex-shrink-0">
+        <img src={b.src} alt={b.alt} width="88" height="31" class="pixelated block" />
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+  
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

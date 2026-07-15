@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./components/tweet.css";
+
+@theme {
+  --color-secondary-bg: #f1f1f1;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+::selection {
+  @apply bg-black text-white;
+}
+
+.dark ::selection {
+  @apply bg-white text-black;
+}
+
+.dark {
+  background-color: #0a0a0a;
+  --color-secondary-bg: #181818;
+}
+
+.prose .anchor {
+  @apply absolute invisible no-underline font-semibold;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose .anchor::after {
+  content: "#";
+  @apply text-neutral-300;
+}
+
+.dark .prose .anchor::after {
+  @apply text-neutral-600;
+}
+
+.prose h1 {
+  @apply text-2xl font-semibold;
+}
+
+.prose h2 {
+  @apply text-xl font-semibold;
+}
+
+.prose h3 {
+  @apply text-lg font-semibold;
+}
+
+.prose h4 {
+  @apply text-base font-semibold;
+}
+
+/* .prose .link { */
+/*   @apply transition-all duration-200 ease-in-out decoration-black dark:decoration-white hover:decoration-[#999999] hover:dark:decoration-[#666666] font-normal underline-offset-4 decoration-1; */
+/* } */
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose-quoteless blockquote p:first-of-type::before,
+.prose-quoteless blockquote p:first-of-type::after {
+  content: none;
+}
+
+/* Adjust embed-caption spacing for consistent layout */
+.tweet + .caption,
+.youtube + .caption,
+.image + .caption,
+pre + .caption {
+  @apply -mt-2.5;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+/* Override Tailwind Typography's inline code */
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose code:not(pre code) {
+  @apply bg-secondary-bg px-1.5 py-0.5 rounded text-sm font-normal;
+}
+
+/* Shiki codeblocks */
+.prose pre {
+  @apply bg-secondary-bg rounded-lg text-sm max-h-[576px];
+}
+
+.shiki,
+.shiki span {
+  @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+}
+
+.shiki .line.highlighted {
+  @apply bg-[#D8D8D8] dark:bg-[#3A3A3A];
+}
+
+/* table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+} */

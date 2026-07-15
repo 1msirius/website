@@ -1,32 +1,44 @@
 {
-  "name": "log-epsilon",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "name": "Ɛpsilon",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
-    "@astrojs/react": "^5.0.4",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^6.2.0",
-    "katex": "^0.16.45",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "@shikijs/rehype": "^4.0.2",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "feed": "^5.2.0",
+    "katex": "^0.16.38",
+    "lucide-react": "^0.577.0",
+    "next": "^16.1.7",
+    "next-mdx-remote": "^6.0.0",
+    "next-themes": "^0.4.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-icons": "^5.6.0",
+    "react-spotify-embed": "^2.1.0",
+    "react-tweet": "^3.3.0",
+    "react-wrap-balancer": "^1.1.1",
+    "react-youtube": "^10.1.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "tailwindcss": "^4.2.4"
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@shikijs/transformers": "^4.0.2",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.27",
+    "shiki": "^4.0.2",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3"
   }
 }
